@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>送给大狐狸🦊的礼物</title>
+    <style>
+        body, html {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffc0cb; /* 粉色背景 */
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .container {
+            text-align: center;
+            color: #fff;
+        }
+        h1, p {
+            margin: 0;
+            font-size: 2em;
+            color: #fff;
+        }
+        .emoji-rain {
+            position: absolute;
+            color: #fff;
+            opacity: 0.9;
+            font-size: 30px; /* emoji大小 */
+            animation: fall linear infinite;
+        }
+        /* 随机设置emoji下落的时间和位置 */
+        @keyframes fall {
+            0% {
+                transform: translateY(-2000px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        .hearts {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 24px;
+            animation: beat 1s infinite;
+        }
+        @keyframes beat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25%, 75% {
+                transform: scale(0.8);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="emoji-rain-container"></div>
+    <div class="container">
+        <h1>送给大狐狸🦊的礼物</h1>
+        <p>小猫和大狐狸的童话世界🌈🏰</p>
+        <p>Sly vester🦊💗Ava🐱</p>
+        <p>🌙✨💫⭐️⭐️🌟✨🦊🐱🌌💐🌷🌹🌸💖</p>
+    </div>
+    <script>
+        // 定义emoji数组
+        const emojis = ['🦊', '🐱', '🐾'];
+
+        function spawnEmoji() {
+            const emoji = document.createElement('span');
+            emoji.classList.add('emoji-rain');
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.animationDuration = `${Math.random() * 10 + 5}s`; // 随机动画时间
+            emoji.style.animationDelay = `-${Math.random() * 10}s`; // 随机延迟时间
+            emoji.style.left = `${Math.random() * 100}vw`; // 随机水平位置
+            emoji.style.top = `${Math.random() * 100}vh`; // 随机垂直位置
+            document.querySelector('.emoji-rain-container').appendChild(emoji);
+
+            // 动画结束后移除emoji
+            emoji.addEventListener('animationend', () => {
+                document.querySelector('.emoji-rain-container').removeChild(emoji);
+            });
+        }
+
+        // 每200毫秒生成一个新的emoji
+        setInterval(spawnEmoji, 200);
+    </script>
+</body>
+</html>
